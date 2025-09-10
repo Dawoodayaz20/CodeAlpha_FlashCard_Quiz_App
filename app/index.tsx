@@ -5,7 +5,7 @@ import './global.css'
 export default function Index() {
   return (
     <View
-      className="mt-10"
+      className="bg-slate-900 mt-10"
     >
       <FlashCardComp />
     </View>

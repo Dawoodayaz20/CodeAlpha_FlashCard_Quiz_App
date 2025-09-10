@@ -5,7 +5,8 @@ export default function FlashCardComp () {
     const [quest, setAns]  = useState<boolean>(true)
     const [QuesNum, setQuesNum] = useState<number>(0)
     
-    const quizArray : string[] = ["The Answer 1","The Answer 2","The Answer 3","The Answer 4", "You have finished the Quiz! Click reset to restart 👇"]
+    const quizArray : string[] = ["Question 1", "Question 2", "Question 3", "Question 4", "You have finished the Quiz! Click reset to restart 👇"]
+    const AnswerArray : string[] = ["Answer 1" , "Answer 2", "Answer 3", "Answer 4", "You have finished the Quiz! Click reset to restart 👇"] 
     const quizLength = quizArray.length
 
     function newQuestion () {
@@ -31,7 +32,7 @@ export default function FlashCardComp () {
                     ? 
                 quizArray[QuesNum]
                     :
-                quizArray[1]}
+                AnswerArray[QuesNum]}
             </Text>
             </TouchableOpacity>
             <View className="flex-row gap-4">
