@@ -24,7 +24,7 @@ The first for installing this app was
       ```bash
          npx tailwindcss init
       ```
-   - Added the configuration in `tailwind.config.js` from the (NativeWind)[https://www.nativewind.dev/docs/getting-started/installation] documentation:
+   - Added the configuration in `tailwind.config.js` from the [NativeWind](https://www.nativewind.dev/docs/getting-started/installation) documentation:
    - Added the `global.css` file in app folder for running TailwindCSS classes.
    - Added the `babel.config.js` and `metro.config.js` in the root of App.
    - Added `nativewind-env.d.ts` to set up the type definitions for TypeScript. 
