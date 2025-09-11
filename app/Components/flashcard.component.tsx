@@ -2,23 +2,35 @@ import React, { useState, useEffect } from "react";
 import { Text, View, TouchableOpacity, Button } from "react-native";
 
 export default function FlashCardComp () {
-    const [quest, setAns]  = useState<boolean>(true)
+    const [Questate, setQueState]  = useState<boolean>(true)
     const [QuesNum, setQuesNum] = useState<number>(0)
     
-    const quizArray : string[] = ["Question 1", "Question 2", "Question 3", "Question 4", "You have finished the Quiz! Click reset to restart 👇"]
-    const AnswerArray : string[] = ["Answer 1" , "Answer 2", "Answer 3", "Answer 4", "You have finished the Quiz! Click reset to restart 👇"] 
-    const quizLength = quizArray.length
+    const QuizObject = [
+        {Question: "Question 1", Answer: "Answer 1"},
+        {Question:"Question 2", Answer: "Answer 2"},
+        {Question:"Question 3", Answer: "Answer 3"},
+        {Question:"Question 4", Answer: "Answer 4"},
+        {Question: "You have finished the Quiz! Click reset to restart 👇", Answer: "You have finished the Quiz! Click reset to restart 👇"}
+    ]
+    
+    const quizLength = QuizObject.length
 
     function newQuestion () {
         if (QuesNum + 1 < quizLength) {
-        setQuesNum(QuesNum + 1);
+            setQueState(true)
+            setQuesNum(QuesNum + 1);
         } else {
         setQuesNum(0);
         }
     }
-    
+
+    function ShowAnswer (QuesNumber:number): string {
+        return (QuizObject[QuesNumber].Answer)
+    }
+
+
     function prevState () {
-        return setAns(!quest)
+        return setQueState(!Questate)
     }
 
     return (
@@ -28,12 +40,14 @@ export default function FlashCardComp () {
             className="bg-white w-80 h-48 rounded-2xl shadow-lg items-center justify-center mb-6"
             >
             <Text className="text-xl font-semibold text-slate-800 text-center">
-                {quest 
+                {Questate 
                     ? 
-                quizArray[QuesNum]
+                QuizObject[QuesNum].Question
                     :
-                AnswerArray[QuesNum]}
+                QuizObject[QuesNum].Answer
+                }
             </Text>
+            {/* <Text className="text-xl font-semibold text-slate-800 text-center">{ShowAnswer(QuesNum)}</Text> */}
             </TouchableOpacity>
             <View className="flex-row gap-4">
             <TouchableOpacity
