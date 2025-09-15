@@ -4,12 +4,7 @@ import './global.css'
 export default function RootLayout() {
   return ( 
   <Stack>
-    <Stack.Screen name="index" options={{
-      headerShown:true,
-      title: "Home",
-      headerTitleAlign:"center"
-    }} 
-    />
+    <Stack.Screen name="(tabs)" options={{headerShown:false}} />
   </Stack>
   );
 }
