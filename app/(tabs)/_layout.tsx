@@ -1,9 +1,11 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Tabs } from "expo-router";
 import React from "react";
-import { Stack, Tabs } from "expo-router";
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import QuizContextProvider from "../Components/QuizContext";
 
 export default function TabsLayout() {
   return ( 
+    <QuizContextProvider>
   <Tabs screenOptions={
     {   
         tabBarStyle:{
@@ -36,5 +38,6 @@ export default function TabsLayout() {
     }} 
     />
   </Tabs>
+  </QuizContextProvider>
 )
 }

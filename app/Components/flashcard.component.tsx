@@ -1,26 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Text, View, TouchableOpacity, Button } from "react-native";
-import { QuizContext } from "../(tabs)/QuizContext";
+import React, { useContext, useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import { QuizContext } from "./QuizContext";
 
 export default function FlashCardComp () {
     const QuizData = useContext(QuizContext);
+    if (!QuizData) {
+        throw new Error("CustomizationTab must be used inside QuizContextProvider");
+    }
+    const { quizState, setQuizState } = QuizData;
     const [Questate, setQueState]  = useState<boolean>(true)
     const [QuesNum, setQuesNum] = useState<number>(0)
-    const [quizData, setQuizData] = useState([
-        {Question: "Question 1", Answer: "Answer 1"},
-        {Question:"Question 2", Answer: "Answer 2"},
-        {Question:"Question 3", Answer: "Answer 3"},
-        {Question:"Question 4", Answer: "Answer 4"},
-        {Question: "You have finished the Quiz! Click reset to restart 👇", 
-        Answer: "You have finished the Quiz! Click reset to restart 👇"}
-    ])
 
-    function addCard(newQ: string, newAns: string){
-        setQuizData([...quizData, { Question: newQ, Answer: newAns}
-        ]);
-    }
-
-    const quizLength = QuizData.quizState.length
+    const quizLength = quizState.length
     console.log(quizLength)
 
     function newQuestion () {
@@ -52,10 +43,10 @@ export default function FlashCardComp () {
             className="bg-white w-80 h-48 rounded-2xl shadow-lg items-center justify-center mb-6"
             >
             <Text className="text-xl font-semibold text-slate-800 text-center">
-                {QuizData.quizState
+                {quizState.length > 0 && quizState[QuesNum]
                 ? ( Questate 
-                    ? QuizData.quizState[QuesNum].question 
-                    : QuizData.quizState[QuesNum].answer
+                    ? quizState[QuesNum].question 
+                    : quizState[QuesNum].answer
                    )
                 : "No Quiz Questions Added"}
             </Text>
