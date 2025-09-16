@@ -36,6 +36,8 @@ export default function FlashCardComp () {
         return setQueState(!Questate)
     }
     
+    console.log(quizState)
+
     return (
         <View className="flex-1 bg-slate-900 items-center justify-center p-6">
             <TouchableOpacity 

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { TextInput } from 'react-native-paper';
 import { QuizContext } from "../Components/QuizContext";
@@ -10,26 +10,48 @@ export default function CustomizationTab(){
     }
     const { quizState, setQuizState } = QuizData;
 
-    function addCard(newQ: string, newAns: string){
-        setQuizState([...quizState, { question: newQ, answer: newAns}
+    const [newQuestion, setNewQuestion] = useState("");
+    const [newAnswer, setNewAnswer] = useState("");
+
+    function addCard(){
+        if(newQuestion.trim() === "" || newAnswer.trim() === "") return;
+
+        try
+        {
+            setQuizState([
+            ...quizState, 
+            { question: newQuestion, answer: newAnswer}
         ]);
+        console.log("Your Quiz card was successfully saved!")
+        }
+        catch(err){
+            console.log("An error was occured while saving your Quiz card", err)
+        }
+
+        setNewQuestion("")
+        setNewAnswer("")
     }
     
+    console.log(quizState)
 
     return(
         <View>
             <Text>Customize your app by adding new questions and answers for quiz.</Text> 
-            <View>
-                <TextInput className="w-90 p-12 border-gray-600 mt-5"
+            <View className="gap-4">
+                <TextInput
+                mode="outlined"
                 label="Add Question"
-                value=""
+                value={newQuestion}
+                onChangeText={setNewQuestion}
                 />
-                <TextInput className="w-90 p-12 border-gray-600 mt-5"
+                <TextInput 
+                mode="outlined"
                 label="Add Answer"
-                value=""
+                value={newAnswer}
+                onChangeText={setNewAnswer}
                 />
            <TouchableOpacity
-            onPress={(() => addCard)}
+            onPress={addCard}
             className="bg-blue-500 px-6 py-3 rounded-xl shadow-md"
             >
                 <Text>Add New Quiz Card</Text>
