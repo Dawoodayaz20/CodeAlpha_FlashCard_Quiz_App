@@ -60,7 +60,7 @@ export default function CustomizationTab(){
             onPress={addCard}
             className="bg-blue-500 py-3 rounded-xl shadow-md"
             >
-                <Text className="w-20 text-center justify-center">Add Quiz Card</Text>
+                <Text className="w-20 text-center items-center justify-center">Add Quiz Card</Text>
             </TouchableOpacity>
             </View>
         </View>
