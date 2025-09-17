@@ -5,7 +5,7 @@ import QuizContextProvider from "../Components/QuizContext";
 
 export default function TabsLayout() {
   return ( 
-    <QuizContextProvider>
+  <QuizContextProvider>
   <Tabs screenOptions={
     {   
         tabBarStyle:{

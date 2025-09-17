@@ -31,30 +31,36 @@ export default function CustomizationTab(){
         setNewQuestion("")
         setNewAnswer("")
     }
-    
-    console.log(quizState)
 
     return(
-        <View>
-            <Text>Customize your app by adding new questions and answers for quiz.</Text> 
+        <View className="flex-1 bg-gray-900 p-6">
+            <Text className="text-white text-2xl font-bold mb-6 text-center">
+        Customize Your Quiz
+      </Text>
+
+      <Text className="text-gray-300 text-center mb-4">
+        Add your own questions and answers to personalize the quiz.
+      </Text> 
             <View className="gap-4">
                 <TextInput
                 mode="outlined"
                 label="Add Question"
                 value={newQuestion}
                 onChangeText={setNewQuestion}
+                className="text-white px-4 py-3 rounded-xl"
                 />
                 <TextInput 
                 mode="outlined"
                 label="Add Answer"
                 value={newAnswer}
                 onChangeText={setNewAnswer}
+                className=" text-white px-4 py-3 rounded-xl"
                 />
            <TouchableOpacity
             onPress={addCard}
-            className="bg-blue-500 px-6 py-3 rounded-xl shadow-md"
+            className="bg-blue-500 py-3 rounded-xl shadow-md"
             >
-                <Text>Add New Quiz Card</Text>
+                <Text className="w-20 text-center justify-center">Add Quiz Card</Text>
             </TouchableOpacity>
             </View>
         </View>

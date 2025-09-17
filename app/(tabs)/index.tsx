@@ -1,6 +1,5 @@
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import FlashCardComp from "../Components/flashcard.component";
-import QuizContextProvider from "../Components/QuizContext";
 import '../global.css';
 
 export default function Index() {
