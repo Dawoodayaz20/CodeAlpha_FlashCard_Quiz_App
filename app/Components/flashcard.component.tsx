@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Text, TouchableOpacity, View, TextInput, Button } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { QuizContext } from "./QuizContext";
 
 export default function FlashCardComp () {
@@ -62,7 +61,6 @@ export default function FlashCardComp () {
             <View 
             className="bg-white w-96 h-48 rounded-2xl shadow-lg items-center justify-center mb-6">
             <View className="flex-row justify-items-stretch">
-            <TouchableOpacity onPress={prevQuestion}><Text className="size-5 text-blue-500 font-extrabold text-2xl mr-10">{"<"}</Text></TouchableOpacity>
             { isEditing ? (
             <View>
             <TextInput
@@ -81,18 +79,30 @@ export default function FlashCardComp () {
             ):
             (
                 <View className="flex-row">
-                   
-                <Text className="text-xl font-semibold text-slate-800 text-center">
+                <TouchableOpacity onPress={prevQuestion}>
+                    <Text className="size-5 text-blue-500 font-extrabold text-2xl mr-10">
+                        {"<"}
+                    </Text>
+                </TouchableOpacity>
+                <View className="w-52">
+                <Text className="overflow-auto text-xl font-semibold text-slate-800 text-center">
                 {quizState.length > 0 && quizState[QuesNum]
                 ? ( Questate 
                     ? quizState[QuesNum].question 
                     : quizState[QuesNum].answer
                    )
-                : "No Quiz Questions Added"}
+                : "No Quiz Cards Added"}
                 </Text>
-                <TouchableOpacity onPress={newQuestion}><Text className="size-5 text-blue-500 last:font-extrabold text-2xl ml-10">{">"}</Text></TouchableOpacity>
                 </View>
-            ) }
+                <TouchableOpacity onPress={newQuestion}>
+                    <Text className="size-5 text-blue-500 last:font-extrabold text-2xl ml-10">
+                        {">"}
+                    </Text>
+            </TouchableOpacity>
+            </View>
+            ) 
+            }
+            
             </View>
             </View>
             <View className="flex-row gap-4">
@@ -120,7 +130,7 @@ export default function FlashCardComp () {
                 onPress={(() => setQueState(!Questate))}
                 className="bg-red-500 px-2 py-3 rounded-xl shadow-md"
                 >
-            <Text className="text-white font-bold text-lg">Show Answer</Text>
+            <Text className="text-white font-bold text-lg">{Questate? "Show Answer":"Show Question"}</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={deleteCard}

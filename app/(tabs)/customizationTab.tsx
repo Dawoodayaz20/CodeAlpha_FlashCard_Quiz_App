@@ -56,12 +56,14 @@ export default function CustomizationTab(){
                 onChangeText={setNewAnswer}
                 className=" text-white px-4 py-3 rounded-xl"
                 />
+            <View className="justify-center items-center flex-1">
            <TouchableOpacity
             onPress={addCard}
-            className="bg-blue-500 py-3 rounded-xl shadow-md"
+            className="bg-blue-500 py-3 rounded-xl shadow-md w-40 justify-center items-center mt-10"
             >
-                <Text className="w-20 text-center items-center justify-center">Add Quiz Card</Text>
+                <Text className="text-center ">Add Quiz Card</Text>
             </TouchableOpacity>
+            </View>
             </View>
         </View>
     )
